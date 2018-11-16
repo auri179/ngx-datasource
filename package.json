@@ -1,0 +1,41 @@
+{
+	"name": "ngx-datasource",
+	"version": "1.0.1",
+	"description": "A simple datasource for pagination and sorting in angular 2+ Arrays",
+	"main": "dist/index",
+	"typings": "dist/index",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/auri179/ngx-datasource"
+	},
+	"scripts": {
+		"prepublishOnly": "npm run ngcompile",
+		"compile": "npm run clean && npm run ngcompile",
+		"clean": "rmdir /s /q dist",
+		"ngcompile": "node_modules/.bin/ngc -p tsconfig.json"
+	},
+	"author": "VENNER Aurélien",
+	"license": "MIT",
+	"dependencies": {},
+	"devDependencies": {
+		"@angular/common": "^7.0.4",
+		"@angular/compiler": "^7.0.4",
+		"@angular/compiler-cli": "^7.0.4",
+		"@angular/core": "^7.0.4",
+		"@angular/platform-browser": "^7.0.4",
+		"ts-helpers": "^1.1.2",
+		"typescript": "^3.1.6",
+		"zone.js": "^0.8.26",
+		"lodash": "^4.17.11",
+		"rxjs": "^6.3.3"
+	},
+	"peerDependencies": {},
+	"files": [
+		"dist",
+		"/package.json"
+	],
+	"exclude": [
+		"node_modules",
+		"dist/"
+	]
+}
