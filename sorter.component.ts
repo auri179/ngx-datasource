@@ -1,9 +1,9 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { DataSourceComponent, SortEvent } from './datasource.component';
+import { Component, Input, OnInit } from "@angular/core";
+import { DataSourceComponent, SortEvent } from "./datasource.component";
 
 @Component({
-	selector: 'tc-sorter',
-	template: `
+  selector: "tc-sorter",
+  template: `
     <a
       class="tc-sorter"
       style="cursor: pointer"
@@ -11,44 +11,33 @@ import { DataSourceComponent, SortEvent } from './datasource.component';
       class="text-nowrap"
     >
       <ng-content></ng-content>
-      <span
-        *ngIf="isSortedByMeAsc"
-        class="icon-arrow-up"
-        aria-hidden="true"
-      ></span>
-      <span
-        *ngIf="isSortedByMeDesc"
-        class="icon-arrow-down"
-        aria-hidden="true"
-      ></span>
     </a>
   `
 })
 export class SorterComponent implements OnInit {
-	@Input()
-	datasource: DataSourceComponent;
-	@Input()
-	field: string;
+  @Input()
+  datasource: DataSourceComponent;
+  @Input()
+  field: string;
 
-	isSortedByMeAsc = false;
-	isSortedByMeDesc = false;
+  sortedAsc = false;
+  sortedDesc = false;
 
-	public constructor() {}
+  public constructor() {}
 
-	public ngOnInit(): void {
-		this.datasource.onSortChange.subscribe((event: SortEvent) => {
-			this.isSortedByMeAsc =
-				event.sortBy === this.field && event.sortOrder === 'asc';
-			this.isSortedByMeDesc =
-				event.sortBy === this.field && event.sortOrder === 'desc';
-		});
-	}
+  public ngOnInit(): void {
+    this.datasource.onSortChange.subscribe((event: SortEvent) => {
+      this.sortedAsc = event.sortBy === this.field && event.sortOrder === "asc";
+      this.sortedDesc =
+        event.sortBy === this.field && event.sortOrder === "desc";
+    });
+  }
 
-	sort() {
-		if (this.isSortedByMeAsc) {
-			this.datasource.setSort(this.field, 'desc');
-		} else {
-			this.datasource.setSort(this.field, 'asc');
-		}
-	}
+  sort() {
+    if (this.sortedAsc) {
+      this.datasource.setSort(this.field, "desc");
+    } else {
+      this.datasource.setSort(this.field, "asc");
+    }
+  }
 }
