@@ -47,7 +47,8 @@ import * as _ from 'lodash';
             </li>
         </ul>
     </tc-paginator>
-    `
+    `,
+    styles:['paginatinon { margin-bottom: 0;}']
 })
 export class BootstrapPaginatorComponent implements OnChanges {
 	@Input()

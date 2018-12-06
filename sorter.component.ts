@@ -4,14 +4,30 @@ import { DataSourceComponent, SortEvent } from "./datasource.component";
 @Component({
   selector: "tc-sorter",
   template: `
-    <a
-      class="tc-sorter"
-      style="cursor: pointer"
-      (click)="sort()"
-      class="text-nowrap"
-    >
-      <ng-content></ng-content>
-    </a>
+    <div style="display:flex">
+      <div>
+        <a
+          class="tc-sorter"
+          style="cursor: pointer"
+          (click)="sort()"
+          class="text-nowrap"
+        >
+          <ng-content></ng-content>
+        </a>
+      </div>
+      <div *ngIf="displayIcons">
+        <span
+          *ngIf="sortedDesc"
+          [class]="'icon-up ' + iconUp"
+          aria-hidden="true"
+        ></span>
+        <span
+          *ngIf="sortedAsc"
+          [class]="'icon-down ' + iconDown"
+          aria-hidden="true"
+        ></span>
+      </div>
+    </div>
   `
 })
 export class SorterComponent implements OnInit {
@@ -19,6 +35,9 @@ export class SorterComponent implements OnInit {
   datasource: DataSourceComponent;
   @Input()
   field: string;
+  @Input() iconUp: string;
+  @Input() iconDown: string;
+  @Input() displayIcons = false;
 
   sortedAsc = false;
   sortedDesc = false;
