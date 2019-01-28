@@ -6,7 +6,7 @@ import * as _ from 'lodash';
 	selector: 'bootstrap-paginator',
 	template: `
     <tc-paginator #p [datasource]="datasource">
-        <ul class="pagination" *ngIf="p.dataLength > p.rowsOnPage">
+        <ul [class]="'pagination' + ' pagination-' + size" *ngIf="p.dataLength > p.rowsOnPage">
             <li class="page-item" [class.disabled]="p.activePage <= 1" (click)="p.setPage(1)">
                 <a class="page-link" style="cursor: pointer">&laquo;</a>
             </li>
@@ -54,7 +54,9 @@ export class BootstrapPaginatorComponent implements OnChanges {
 	@Input()
 	rowsOnPageSet = [];
 	@Input()
-	datasource: DataSourceComponent;
+    datasource: DataSourceComponent;
+    @Input()
+    size: string = "sm";
 
 	minRowsOnPage = 0;
 

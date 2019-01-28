@@ -1,6 +1,6 @@
 {
 	"name": "ngx-simple-datasource",
-	"version": "1.0.6",
+	"version": "1.0.8",
 	"description": "A simple datasource for pagination and sorting in angular 2+ Arrays",
 	"main": "dist/index",
 	"typings": "dist/index",
